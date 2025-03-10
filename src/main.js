@@ -4,8 +4,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 document.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(ScrollTrigger);
   // Initialize Lenis
-  const lenis = new Lenis();
+  const lenis = new Lenis({
+    infinite: true,
+    syncTouch: true
+  });
 
   // Use requestAnimationFrame to continuously update the scroll
   function raf(time) {
@@ -14,8 +18,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 
   requestAnimationFrame(raf);
-
-  gsap.registerPlugin(ScrollTrigger);
 
   //get all recognition wrapper
   let recognition = gsap.utils.toArray(".recognition");
